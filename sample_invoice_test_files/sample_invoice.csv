@@ -1,0 +1,4 @@
+invoice_no,invoice_date,due_date,customer,customer_address,mobile,item,quantity,unit_price,tax_rate
+INV-2026-00125,2026-08-25,2026-09-10,ABC Retail India Pvt. Ltd.,"45 MI Road, Jaipur, Rajasthan 302001",+91-9876543210,Laptop Stand,2,1499.0,18.0
+INV-2026-00125,2026-08-25,2026-09-10,ABC Retail India Pvt. Ltd.,"45 MI Road, Jaipur, Rajasthan 302001",+91-9876543210,Wireless Keyboard,3,1299.0,18.0
+INV-2026-00125,2026-08-25,2026-09-10,ABC Retail India Pvt. Ltd.,"45 MI Road, Jaipur, Rajasthan 302001",+91-9876543210,USB-C Hub,2,1899.0,18.0
