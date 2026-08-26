@@ -1,124 +1,303 @@
-# AI Invoice Generator
+# InvoiceForge AI
 
-AI-powered invoice processing API built with FastAPI, MySQL, document parsers, Gemini, validation and PDF generation.
+### Intelligent Invoice Processing, Data Masking & Automation Platform
 
-## Features
+> **Extract intelligently. Validate accurately. Mask securely. Generate professionally.**
 
-- Upload PDF, image, DOCX, XLSX or CSV invoices.
-- Extract invoice text using document parsers/OCR.
-- Extract structured invoice fields with Gemini.
-- Validate totals and invoice fields with deterministic Python rules.
-- Generate a masked invoice PDF.
-- Store invoice metadata in MySQL.
-- Direct invoice creation endpoint for testing without Gemini.
+InvoiceForge AI is an AI-powered invoice intelligence and automation platform designed to automate the invoice processing lifecycle — from multi-format document ingestion and AI-powered data extraction to validation, secure database storage, sensitive-data masking, and professional PDF generation.
 
-## Project Structure
+The platform combines **Generative AI, document processing, data validation, MySQL persistence, sensitive-data masking, and automated PDF generation** into a modular FastAPI-based architecture.
+
+
+
+##  Overview
+
+Traditional invoice processing often involves manually reading documents, extracting customer and item information, validating invoice data, entering records into databases, and generating or sharing invoices.
+
+**InvoiceForge AI** automates this workflow using AI and backend automation.
 
 ```text
-invoce/
-├── ai/
-├── routers/
-├── services/
-├── utils/
-├── templates/
-├── invoices/
-├── uploads/
-├── config.py
-├── database.py
-├── models.py
-├── main.py
-├── requirements.txt
-└── .env
+Invoice Document
+       │
+       ▼
+Document Processing
+       │
+       ▼
+AI-Powered Extraction
+       │
+       ▼
+Structured Invoice Data
+       │
+       ▼
+Data Validation
+       │
+       ▼
+MySQL Persistence
+       │
+       ▼
+Sensitive Data Masking
+       │
+       ▼
+Professional PDF Generation
 ```
 
-## 1. Create MySQL Database
 
-```sql
-CREATE DATABASE invoice_db;
+
+##  Key Features
+
+-  AI-powered invoice data extraction using Google Gemini
+-  Multi-format invoice/document processing
+-  Automated invoice data validation
+-  Sensitive customer data masking
+-  MySQL database persistence
+-  Professional PDF invoice generation
+-  FastAPI REST API
+-  Swagger / OpenAPI documentation
+-  Modular backend architecture
+-  Environment-based secret management
+-  Structured error handling
+-  Structured invoice data processing
+
+
+
+#  High-Level Architecture
+
+```text
+                         ┌──────────────────────────┐
+                         │          USER            │
+                         │                          │
+                         │ Invoice / Document Input │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │       FastAPI API        │
+                         │                          │
+                         │ REST Endpoints           │
+                         │ Request Validation       │
+                         │ Error Handling            │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │    Invoice Service       │
+                         │                          │
+                         │ Business Logic           │
+                         │ Workflow Orchestration   │
+                         └────────────┬─────────────┘
+                                      │
+              ┌───────────────────────┼───────────────────────┐
+              │                       │                       │
+              ▼                       ▼                       ▼
+     ┌────────────────┐     ┌────────────────┐     ┌────────────────┐
+     │ Document       │     │   Gemini AI    │     │  Validation    │
+     │ Processing     │     │                │     │    Engine       │
+     │                │     │ Invoice        │     │                │
+     │ PDF            │     │ Extraction     │     │ Field Checks   │
+     │ Images         │     │                │     │ Item Checks    │
+     │ DOCX           │     │ Structured     │     │ Data Checks    │
+     │ XLSX / CSV     │     │ Output         │     │                │
+     └───────┬────────┘     └───────┬────────┘     └───────┬────────┘
+             │                      │                      │
+             └──────────────────────┼──────────────────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────────┐
+                         │   Structured Invoice     │
+                         │          Data            │
+                         └────────────┬─────────────┘
+                                      │
+                         ┌────────────┴─────────────┐
+                         │                          │
+                         ▼                          ▼
+                ┌──────────────────┐      ┌────────────────────┐
+                │      MySQL       │      │  PDF Generation    │
+                │     Database     │      │                    │
+                │                  │      │ Data Masking       │
+                │ Invoice Storage  │      │ Document Formatting│
+                └──────────────────┘      └─────────┬──────────┘
+                                                    │
+                                                    ▼
+                                      ┌────────────────────────┐
+                                      │   Secure Generated     │
+                                      │      Invoice PDF       │
+                                      └────────────────────────┘
 ```
 
-Then edit `.env`:
 
-```env
-DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/invoice_db
-GEMINI_API_KEY=
-OCR_LANG=eng
+
+# Invoice Processing Workflow
+
+```text
+                 Invoice Upload
+                       │
+                       ▼
+                Detect File Type
+                       │
+                       ▼
+                 Parse Document
+                       │
+                       ▼
+             Extract Invoice Content
+                       │
+                       ▼
+                Gemini AI Processing
+                       │
+                       ▼
+              Structured Invoice Data
+                       │
+                       ▼
+                  Data Validation
+                       │
+                ┌──────┴──────┐
+                │             │
+             Invalid         Valid
+                │             │
+                ▼             ▼
+          Return Error    Store in MySQL
+                              │
+                              ▼
+                      Apply Data Masking
+                              │
+                              ▼
+                       Generate PDF
+                              │
+                              ▼
+                     Final Invoice Output
 ```
 
-Keep the API key empty until you are ready to use the upload/AI endpoint.
+
+
+#  Technology Stack
+
+| Layer | Technology |
+|---|---|
+| Programming Language | Python |
+| Backend Framework | FastAPI |
+| AI / LLM | Google Gemini |
+| GenAI SDK | Google GenAI |
+| Database | MySQL |
+| ORM | SQLAlchemy |
+| Database Driver | PyMySQL |
+| API Server | Uvicorn |
+| Data Validation | Pydantic |
+| PDF Generation | ReportLab |
+| Document Processing | PDF / Image / DOCX / Excel / CSV |
+| API Documentation | Swagger / OpenAPI |
+| Configuration | python-dotenv |
+| Version Control | Git / GitHub |
+| Package Management | uv / pip |
+
+
+
+
+#  Installation & Setup
+
+## Prerequisites
+
+- Python 3.11+
+- MySQL
+- Git
+- Google Gemini API Key
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/InvoiceForge-AI.git
+cd InvoiceForge-AI
+```
 
 ## 2. Create Virtual Environment
 
-Windows:
-
-```powershell
+```bash
 python -m venv .venv
-.\.venv\Scripts\activate
 ```
 
-Install dependencies:
+### Windows
 
 ```powershell
+.venv\Scriptsctivate
+```
+
+## 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-## 3. Run API
+Or:
 
-From the `invoce` directory:
-
-```powershell
-uvicorn main:app --reload
+```bash
+uv pip install -r requirements.txt
 ```
 
-Open:
-
-- `http://127.0.0.1:8000/`
-- `http://127.0.0.1:8000/health`
-- `http://127.0.0.1:8000/docs`
-
-## 4. Test Without Gemini API
-
-Use:
+### Swagger UI
 
 ```text
-POST /api/invoice/direct
+http://127.0.0.1:8000/docs
 ```
 
-It accepts form fields:
 
-- `customer_name`
-- `mobile`
-- `address`
-- `items` — JSON array such as `[{"name":"Product A","quantity":2,"price":100}]`
-- `tax`
-- `due_date` — `YYYY-MM-DD`
 
-This endpoint does not call Gemini.
+#  Project Objective
 
-## 5. Enable Gemini Later
-
-Add your real key to `.env`:
-
-```env
-GEMINI_API_KEY=YOUR_REAL_KEY
-```
-
-Then use:
+The objective of InvoiceForge AI is to reduce manual invoice-processing effort by combining **Generative AI, document processing, structured validation, database automation, sensitive-data protection, and automated document generation** into a unified platform.
 
 ```text
-POST /api/invoice/upload
+Unstructured Invoice
+        │
+        ▼
+   AI Extraction
+        │
+        ▼
+ Structured Data
+        │
+        ▼
+    Validation
+        │
+        ▼
+ Secure Persistence
+        │
+        ▼
+ Sensitive Data Masking
+        │
+        ▼
+ Professional PDF
 ```
 
-## OCR Note
+---
 
-For image invoices, Tesseract OCR must be installed separately on Windows and available on PATH. If Hindi OCR is required, install the Hindi Tesseract language data and set:
+#  Skills Demonstrated
 
-```env
-OCR_LANG=eng+hin
+```text
+Python
+FastAPI
+Generative AI
+Google Gemini
+LLM Integration
+REST API Development
+Document Intelligence
+Data Validation
+MySQL
+SQLAlchemy
+PyMySQL
+PDF Generation
+Data Masking
+Streamlit
+Backend Architecture
+API Design
+Environment Configuration
+Git & GitHub
 ```
 
-For scanned/image-only PDFs, the project includes a `pdf2image` fallback. Poppler must also be installed and available on PATH.
 
-## Security
 
-Do not commit `.env`, API keys, database passwords, generated invoices or virtual environments to GitHub.
+<div align="center">
+
+## InvoiceForge AI
+
+### Intelligent Invoice Processing, Data Masking & Automation Platform
+
+**Extract intelligently. Validate accurately. Mask securely. Generate professionally.**
+
+</div>
