@@ -6,7 +6,7 @@
 
 InvoiceForge AI is an AI-powered invoice intelligence and automation platform designed to automate the invoice processing lifecycle — from multi-format document ingestion and AI-powered data extraction to validation, secure database storage, sensitive-data masking, and professional PDF generation.
 
-The platform combines **Generative AI, document processing, data validation, MySQL persistence, sensitive-data masking, and automated PDF generation** into a modular FastAPI-based architecture.
+The platform combines **Generative AI, document processing, OCR, data validation, MySQL persistence, sensitive-data masking, and automated PDF generation** into a modular FastAPI-based architecture.
 
 
 
@@ -46,7 +46,7 @@ Professional PDF Generation
 ##  Key Features
 
 -  AI-powered invoice data extraction using Google Gemini
--  Multi-format invoice/document processing
+-  Multi-format invoice/document processing/OCR
 -  Automated invoice data validation
 -  Sensitive customer data masking
 -  MySQL database persistence
@@ -135,7 +135,7 @@ Professional PDF Generation
                 Detect File Type
                        │
                        ▼
-                 Parse Document
+                 Parse Document/OCR
                        │
                        ▼
              Extract Invoice Content
